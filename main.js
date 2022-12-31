@@ -4,7 +4,7 @@ const elts = {
 };
 
 // The strings to morph between. You can change these to anything you want!
-const texts = ["Why", "is", "this", "so", "satisfying", "to", "watch?"];
+const texts = ["PERDIDOS", "LOST", "is", "so", "satisfying", "to", "watch?"];
 
 // Controls the speed of morphing.
 const morphTime = 1;
@@ -88,11 +88,8 @@ animate();
 [2.0],[2.1].[2.2]
 */
 
-let matriz = [
-  ["1", "2", "3"],
-  ["4", "", "6"],
-  ["7", "8", "9"],
-];
+
+
 
 let board = document.querySelector(".board");
 //console.log(board);
@@ -100,6 +97,7 @@ drawTokens();
 addEventListeners();
 
 function drawTokens() {
+	board.innerHTML=''
   matriz.forEach((row) =>
     row.forEach((element) => {
       if (element == "") {
@@ -113,13 +111,19 @@ function drawTokens() {
 
 function addEventListeners() {
   let tokens = document.querySelectorAll(".token");
-  tokens.forEach(token =>
-    token.addEventListener("click", ()=>{
-      let actualPosition = searchPosition(token.innerText)
-	  //console.log(actualPosition)
-	  let emptyPosition =searchPosition('')
-	  //console.log(emptyPosition)
-	  let movement = nextMovement(actualPosition, emptyPosition)
+  tokens.forEach((token) =>
+    token.addEventListener("click", () => {
+      let actualPosition = searchPosition(token.innerText);
+      //console.log(actualPosition)
+      let emptyPosition = searchPosition("");
+      //console.log(emptyPosition)
+      let movement = canItMove(actualPosition, emptyPosition);
+      updateMatrix(token.innerHTML, actualPosition, emptyPosition);
+      if (movement !== false) {
+        updateMatrix(token.innerText, actualPosition, emptyPosition);
+		drawTokens();
+		addEventListeners();
+	}
     })
   );
 }
@@ -128,29 +132,69 @@ function searchPosition(element) {
   let rowIndex = 0;
   let columnIndex = 0;
   matriz.forEach((row, index) => {
-    let rowElement = row.findIndex(item => item == element)
+    let rowElement = row.findIndex((item) => item == element);
     if (rowElement !== -1) {
       //console.log(rowElement, index);
-	  rowIndex = index;
-	  columnIndex = rowElement
-     
+      rowIndex = index;
+      columnIndex = rowElement;
     }
-  })
-  return [rowIndex, columnIndex]
+  });
+  return [rowIndex, columnIndex];
 }
 
-function nextMovement(actualPosition, emptyPosition){
-	if(actualPosition[0]-emptyPosition[0] ==-1){
-		console.log('abajo')
-	}else if(actualPosition[0]-emptyPosition[0] ==1){
-		console.log('arriba')
-	}else if(actualPosition[0] == emptyPosition[0]){
-		if(actualPosition[1]-emptyPosition[1] == -1){
-			console.log('Derecha');
-		}else if(actualPosition[1]-emptyPosition[1]== 1){
-			console.log('izquierda');
-		}
-	}else{
-		console.log('Sin movimiento')
-	}
+function canItMove(actualPosition, emptyPosition) {
+  if (actualPosition[1] == emptyPosition[1]) {
+    if (
+      actualPosition[0] - emptyPosition[0] > 1 ||
+      actualPosition[0] - emptyPosition[0] < -1
+    ) {return false} 
+
+
+	}else if (actualPosition[0] == emptyPosition[0]) {
+      if (
+        actualPosition[1] - emptyPosition[1] > 1 ||
+        actualPosition[1] - emptyPosition[1] < -1
+      ) {return false}
+     
+  
+	}else{return false}
 }
+
+
+function updateMatrix(element, actualPosition, emptyPosition) {
+  matriz[actualPosition[0]][actualPosition[1]] = "";
+  matriz[emptyPosition[0]][emptyPosition[1]] = element;
+  console.log(matriz);
+}
+
+function shuffleMatrix(){
+  /*let initialmatriz = [
+    ["1", "2", "3"],
+    ["4", "5", "6"],
+    ["7", "8", ""],
+  ];*/
+  let shuffleMatrix =[
+    [],[],[]];
+    let column = 0;
+    let row = 0;
+	
+  let array= ['1','2','3','4','5','6','7','8',''];
+  let shuffleArray = array.sort(()=> Math.random() -0.5 )
+  shuffleArray.forEach(element => {
+    shuffleMatrix[row].push(element)
+    if(column <2){
+      column++;
+    
+    }else{
+      column = 0;
+      row++;
+    }
+    
+
+  })
+
+
+}
+
+
+shuffleMatrix()
