@@ -87,17 +87,18 @@ animate();
 [1.0],[1.1].[1.2]
 [2.0],[2.1].[2.2]
 */
-
+let matriz = shuffleMatrix();
 
 
 
 let board = document.querySelector(".board");
 //console.log(board);
+
 drawTokens();
 addEventListeners();
 
 function drawTokens() {
-	board.innerHTML=''
+	board.innerHTML='';
   matriz.forEach((row) =>
     row.forEach((element) => {
       if (element == "") {
@@ -114,9 +115,7 @@ function addEventListeners() {
   tokens.forEach((token) =>
     token.addEventListener("click", () => {
       let actualPosition = searchPosition(token.innerText);
-      //console.log(actualPosition)
       let emptyPosition = searchPosition("");
-      //console.log(emptyPosition)
       let movement = canItMove(actualPosition, emptyPosition);
       updateMatrix(token.innerHTML, actualPosition, emptyPosition);
       if (movement !== false) {
@@ -173,6 +172,7 @@ function shuffleMatrix(){
     ["4", "5", "6"],
     ["7", "8", ""],
   ];*/
+
   let shuffleMatrix =[
     [],[],[]];
     let column = 0;
@@ -197,4 +197,3 @@ function shuffleMatrix(){
 }
 
 
-shuffleMatrix()
