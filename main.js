@@ -87,9 +87,12 @@ animate();
 [1.0],[1.1].[1.2]
 [2.0],[2.1].[2.2]
 */
-let matriz = shuffleMatrix();
-
-
+let Matrix = [
+  ["1", "2", "3"],
+  ["4", "5", "6"],
+  ["7", "8", ""],
+];
+let matriz =/* Matrix ||*/ shuffleMatrix();
 
 let board = document.querySelector(".board");
 //console.log(board);
@@ -98,7 +101,7 @@ drawTokens();
 addEventListeners();
 
 function drawTokens() {
-	board.innerHTML='';
+  board.innerHTML = "";
   matriz.forEach((row) =>
     row.forEach((element) => {
       if (element == "") {
@@ -120,9 +123,11 @@ function addEventListeners() {
       updateMatrix(token.innerHTML, actualPosition, emptyPosition);
       if (movement !== false) {
         updateMatrix(token.innerText, actualPosition, emptyPosition);
-		drawTokens();
-		addEventListeners();
-	}
+
+        compareMatrix();
+        drawTokens();
+        addEventListeners();
+      }
     })
   );
 }
@@ -140,23 +145,46 @@ function searchPosition(element) {
   });
   return [rowIndex, columnIndex];
 }
+//refactor canitmove
+function nextMovement(actualPosition, emptyPosition) {
+  if (actualPosition[1] == emptyPosition[1]) {
+    if (actualPosition[0] - emptyPosition[0] == -1) {
+      return "down";
+    } else if (actualPosition[0] - emptyPosition[0] == 1) {
+      return "up";
+    } else {
+      return "noMove";
+    }
+  } else if (actualPosition[0] == emptyPosition[0]) {
+    if (actualPosition[1] - emptyPosition[1] == -1) {
+      return "right";
+    } else if (actualPosition[1] - emptyPosition[1] == 1) {
+      return "left";
+    } else {
+      return "noMove";}
+    }else {
+      return "noMove";
+  }
+}
 
 function canItMove(actualPosition, emptyPosition) {
-  if (actualPosition[1] == emptyPosition[1]) {
-    if (
-      actualPosition[0] - emptyPosition[0] > 1 ||
-      actualPosition[0] - emptyPosition[0] < -1
-    ) {return false} 
+  if (actualPosition[1] == emptyPosition[1]){
 
+    if (actualPosition[0]- emptyPosition[0]>1 
+    || actualPosition[0] - emptyPosition[0]<-1){
+      return 'noMove'
+    }//58
 
-	}else if (actualPosition[0] == emptyPosition[0]) {
-      if (
-        actualPosition[1] - emptyPosition[1] > 1 ||
-        actualPosition[1] - emptyPosition[1] < -1
-      ) {return false}
-     
-  
-	}else{return false}
+  } else if (actualPosition[0] == emptyPosition[0]) {//67
+    if (actualPosition[1] - emptyPosition[1] > 1 ||
+      actualPosition[1]-emptyPosition[1]<-1){
+        return false//70
+
+  }//71
+}else{//80
+  return false
+}//82
+
 }
 
 
@@ -166,34 +194,29 @@ function updateMatrix(element, actualPosition, emptyPosition) {
   console.log(matriz);
 }
 
-function shuffleMatrix(){
-  /*let initialmatriz = [
-    ["1", "2", "3"],
-    ["4", "5", "6"],
-    ["7", "8", ""],
-  ];*/
+function shuffleMatrix() {
+  let shuffleMatrix = [[], [], []];
+  let column = 0;
+  let row = 0;
 
-  let shuffleMatrix =[
-    [],[],[]];
-    let column = 0;
-    let row = 0;
-	
-  let array= ['1','2','3','4','5','6','7','8',''];
-  let shuffleArray = array.sort(()=> Math.random() -0.5 )
-  shuffleArray.forEach(element => {
-    shuffleMatrix[row].push(element)
-    if(column <2){
+  let array = ["1", "2", "3", "4", "5", "6", "7", "8", ""];
+  let shuffleArray = array.sort(() => Math.random() - 0.5);
+  shuffleArray.forEach((element) => {
+    shuffleMatrix[row].push(element);
+    if (column < 2) {
       column++;
-    
-    }else{
+    } else {
       column = 0;
       row++;
     }
-    
-
   })
-
-
+  return shuffleMatrix;
 }
 
-
+function compareMatrix() {
+  let finalMatrix = [
+    ["1", "2", "3"],
+    ["4", "5", "6"],
+    ["7", "8", ""],
+  ];
+}
