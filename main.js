@@ -92,7 +92,7 @@ let Matrix = [
   ["4", "5", "6"],
   ["7", "8", ""],
 ];
-let matriz =/* Matrix ||*/ shuffleMatrix();
+let matriz = /* Matrix ||*/ shuffleMatrix();
 
 let board = document.querySelector(".board");
 //console.log(board);
@@ -124,7 +124,8 @@ function addEventListeners() {
       if (movement !== false) {
         updateMatrix(token.innerText, actualPosition, emptyPosition);
 
-        compareMatrix();
+        let resultado = compareMatrix();
+        console.log(resultado);
         drawTokens();
         addEventListeners();
       }
@@ -161,32 +162,34 @@ function nextMovement(actualPosition, emptyPosition) {
     } else if (actualPosition[1] - emptyPosition[1] == 1) {
       return "left";
     } else {
-      return "noMove";}
-    }else {
       return "noMove";
+    }
+  } else {
+    return "noMove";
   }
 }
 
 function canItMove(actualPosition, emptyPosition) {
-  if (actualPosition[1] == emptyPosition[1]){
-
-    if (actualPosition[0]- emptyPosition[0]>1 
-    || actualPosition[0] - emptyPosition[0]<-1){
-      return 'noMove'
-    }//58
-
-  } else if (actualPosition[0] == emptyPosition[0]) {//67
-    if (actualPosition[1] - emptyPosition[1] > 1 ||
-      actualPosition[1]-emptyPosition[1]<-1){
-        return false//70
-
-  }//71
-}else{//80
-  return false
-}//82
-
+  if (actualPosition[1] == emptyPosition[1]) {
+    if (
+      actualPosition[0] - emptyPosition[0] > 1 ||
+      actualPosition[0] - emptyPosition[0] < -1
+    ) {
+      return "noMove";
+    } //58
+  } else if (actualPosition[0] == emptyPosition[0]) {
+    //67
+    if (
+      actualPosition[1] - emptyPosition[1] > 1 ||
+      actualPosition[1] - emptyPosition[1] < -1
+    ) {
+      return false; //70
+    } //71
+  } else {
+    //80
+    return false;
+  } //82
 }
-
 
 function updateMatrix(element, actualPosition, emptyPosition) {
   matriz[actualPosition[0]][actualPosition[1]] = "";
@@ -209,28 +212,28 @@ function shuffleMatrix() {
       column = 0;
       row++;
     }
-  })
+  });
   return shuffleMatrix;
 }
 
 function compareMatrix() {
-  let counter = 0;
+  let counter
   let finalMatrix = [
     ["1", "2", "3"],
     ["4", "5", "6"],
     ["7", "8", ""],
   ];
-  Matrix.forEach((row, indexRow )=> {
-    row.forEach((element, indexColum) =>{
-    if(element == finalMatrix[indexRow][indexColum]){
-      counter++
-      
-    }
+  Matrix.forEach((row, indexRow) => {
+    row.forEach((element, indexColum) => {
+      if (element == finalMatrix[indexRow][indexColum]) {
+      counter++;
+      } 
+    })
   })
-})
 
-if(counter == 9){
-  return true;
-}
-
+  if (counter == 9) {
+    return true;
+  } else {
+    return false;
+  }
 }
