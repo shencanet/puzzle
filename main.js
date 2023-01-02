@@ -219,4 +219,12 @@ function compareMatrix() {
     ["4", "5", "6"],
     ["7", "8", ""],
   ];
+  Matrix.forEach((row, indexRow )=> {
+    row.forEach((element, indexColum) =>{
+    if(element = finalMatrix[indexRow][indexColum]){
+      console.log("si son iguales")
+    }
+  })
+})
+
 }
