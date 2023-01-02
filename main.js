@@ -214,6 +214,7 @@ function shuffleMatrix() {
 }
 
 function compareMatrix() {
+  let counter = 0;
   let finalMatrix = [
     ["1", "2", "3"],
     ["4", "5", "6"],
@@ -221,10 +222,15 @@ function compareMatrix() {
   ];
   Matrix.forEach((row, indexRow )=> {
     row.forEach((element, indexColum) =>{
-    if(element = finalMatrix[indexRow][indexColum]){
-      console.log("si son iguales")
+    if(element == finalMatrix[indexRow][indexColum]){
+      counter++
+      
     }
   })
 })
+
+if(counter == 9){
+  return true;
+}
 
 }
