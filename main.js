@@ -90,9 +90,9 @@ animate();
 let Matrix = [
   ["1", "2", "3"],
   ["4", "5", "6"],
-  ["7", "8", ""],
+  ["7", "", "8"],
 ];
-let matriz = /* Matrix ||*/ shuffleMatrix();
+let matriz =  Matrix || shuffleMatrix();
 
 let board = document.querySelector(".board");
 //console.log(board);
@@ -126,6 +126,11 @@ function addEventListeners() {
 
         let resultado = compareMatrix();
         console.log(resultado);
+        if (resultado == true) {
+          confetti();
+          
+        }
+      
         drawTokens();
         addEventListeners();
       }
@@ -217,7 +222,7 @@ function shuffleMatrix() {
 }
 
 function compareMatrix() {
-  let counter
+  let counter = 0;
   let finalMatrix = [
     ["1", "2", "3"],
     ["4", "5", "6"],
@@ -230,7 +235,7 @@ function compareMatrix() {
       } 
     })
   })
-
+  console.log(counter);
   if (counter == 9) {
     return true;
   } else {
