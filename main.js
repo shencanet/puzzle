@@ -127,7 +127,9 @@ function addEventListeners() {
         let resultado = compareMatrix();
         console.log(resultado);
         if (resultado == true) {
-          confetti();
+          setTimeout(() => {
+            confetti();
+          }, 400);
           
         }
       
