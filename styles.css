@@ -6,6 +6,12 @@
     box-sizing: border-box;
 }
 
+
+:root{
+    --tokens:#f3ea60;
+    --tokenShadow: aqua;
+
+}
 .board{
     
     display: grid;
@@ -18,12 +24,12 @@
 
 body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: aquamarine;
+    background-color: var(--tokenShadow);
 }
 
 
 .token{
-    background-color: #f3ea60;
+    background-color: var(--tokens);
     width: 100px;
     height: 100px;
     display: flex;
@@ -32,7 +38,7 @@ body{
     font-size: 40px;
     cursor: pointer;
     border-radius: 4px;
-    box-shadow: 3px 3px #b96453;
+    box-shadow: 3px 3px var(--tokenShadow);
 
 
 }
