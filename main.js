@@ -242,5 +242,17 @@ function compareMatrix() {
     return true;
   } else {
     return false;
+
+
   }
 }
+
+let sound = new Audio('./Music/Metallica.mp3');
+
+playbtn.addEventListener('click', ()=>{
+  sound.play();
+});
+
+pausebtn.addEventListener('click', ()=>{
+  sound.pause();
+});
