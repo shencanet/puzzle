@@ -97,8 +97,8 @@ let matriz =  Matrix || shuffleMatrix();
 let board = document.querySelector(".board");
 //console.log(board);
 
-drawTokens();
-addEventListeners();
+//drawTokens();
+//addEventListeners();
 
 function drawTokens() {
   board.innerHTML = "";
@@ -133,8 +133,8 @@ function addEventListeners() {
           
         }
       
-        drawTokens();
-        addEventListeners();
+        //drawTokens(); ??¿?¿?¿?¿?¿quw hace esto????
+        //addEventListeners();
       }
     })
   );

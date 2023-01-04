@@ -10,6 +10,8 @@
 :root{
     --tokens:#f3ea60;
     --tokenShadow: aqua;
+    --tokenText: #020202;
+    --background: hsl(231, 38%, 79%);
 
 }
 .board{
@@ -24,7 +26,8 @@
 
 body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: var(--tokenShadow);
+    background-color: var(--background);
+    color: var(--tokenText);
 }
 
 
