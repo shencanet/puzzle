@@ -61,14 +61,26 @@ body{
 /* Your average text styling */
 #text1, #text2 {
 	position: absolute;
-	width: 100%;
+	width: 90%;
 	display: inline-block;
 	
 	font-family: 'Raleway', sans-serif;
 	font-size: 80pt;
 	
-	text-align: top;
+	text-align: center;
+
 	
 	user-select: none;
 }
 
+/*PANTALLA INICIAL */
+.first-screen{
+    border: 1px solid red;
+    text-align: center;
+
+
+}
+.first-screen p{
+    font-weight: bold;
+    font-size: 32px;
+}
