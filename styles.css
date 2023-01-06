@@ -96,23 +96,18 @@ body{
 }
 /*Botones*/
 
-.startBtn-container{
-    border: 2px solid white;
 
-
-}
-/*Juego */
 .startBtn-container{
     border: 2px solid white;
     position: relative;
     width: 280px;
-    margin: auto 300px;
+    margin: 0 auto 300px;
 }
 
 .play-btn{
      width: 280px;
      height: 60px;
-     font-size: 18px;
+     font-size: 32px;
      border-radius: 8px;
      cursor: pointer;
      background-color: var(--btnBackground);
@@ -120,6 +115,7 @@ body{
      border: none;
      position: absolute;
      top: 0;
+     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .btn-shadow{
@@ -127,7 +123,12 @@ body{
     height: 60px;
     background-color: var(--btnShadow);
     border-radius: 8px;
+    border-radius: 8px;
     position: absolute;
+    top: 4px;
+    z-index: -1;
+    
+   
 
      }
 

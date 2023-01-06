@@ -93,8 +93,16 @@ let Matrix = [
   ["7", "", "8"],
 ];
 let matriz =  Matrix || shuffleMatrix();
-
+let startBtn = document.querySelector('#start')
 let board = document.querySelector(".board");
+//animacion botones
+startBtn.addEventListener('mousedown', ()=>{
+  startBtn.style.top = '4px';
+})
+startBtn.addEventListener('mouseup', ()=>{
+  startBtn.style.top = '0px';
+})
+
 //console.log(board);
 
 //drawTokens();
