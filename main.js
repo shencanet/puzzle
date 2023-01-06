@@ -263,11 +263,13 @@ function shuffleMatrix() {
   });
 
 
-  return [
+  return shuffleArray;
+  /*
+  [
     ["1", "2", "3"],
     ["4", "", "6"],
     ["7", "5", "8"],
-  ];
+  ];*/
 }
 
 function compareMatrix() {
