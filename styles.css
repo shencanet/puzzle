@@ -23,7 +23,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 4px;
     width: 310px;
-    margin: 120px auto;
+    margin: 120px auto 30PX;
 
 }
 

@@ -85,42 +85,38 @@ animate();
 /*fila *columna
 [0.0],[0.1].[0.2]
 [1.0],[1.1].[1.2]
-[2.0],[2.1].[2.2]
-*/
+[2.0],[2.1].[2.2]*/
+
 let Matrix = [
   ["1", "2", "3"],
   ["4", "", "6"],
   ["7", "5", "8"],
 ];
-let matriz =  Matrix || shuffleMatrix();
-let startBtn = document.querySelector('#start')
+let Matriz = shuffleMatrix();
+let startBtn = document.querySelector("#start");
 let board = document.querySelector(".board");
-let firstScreen = document.querySelector('.first-screen');
-let startBtncontainer = document.querySelector('.startBtn-container');
+let firstScreen = document.querySelector(".first-screen");
+let startBtncontainer = document.querySelector(".startBtn-container");
 //animacion botones
-startBtn.addEventListener('mousedown', ()=>{
-  startBtn.style.top = '4px';
-})
-startBtn.addEventListener('mouseup', ()=>{
+startBtn.addEventListener("mousedown", () => {
+  startBtn.style.top = "4px";
+});
+startBtn.addEventListener("mouseup", () => {});
 
-})
-startBtn.addEventListener('click', ()=>{
-  firstScreen.style.display = 'none';
-  startBtncontainer.style.display = 'none'; 
-
+startBtn.addEventListener("click", () => {
+  firstScreen.style.display = "none";
+  startBtncontainer.style.display = "none";
+  Matriz = shuffleMatrix();
   drawTokens();
   addEventListeners();
-
-})
-
-
+});
 
 //drawTokens();
 //addEventListeners();
 
 function drawTokens() {
   board.innerHTML = "";
-  matriz.forEach((row) =>
+  Matriz.forEach((row) =>
     row.forEach((element) => {
       if (element == "") {
         board.innerHTML += `<div class ='empty'>${element}</div>`;
@@ -144,14 +140,19 @@ function addEventListeners() {
 
         let resultado = compareMatrix();
         console.log(resultado);
-        
+
         if (resultado == true) {
+          startBtncontainer.style.display = "block";
+          startBtn.innerText = "Jugar de nuevo";
+          confetti();
+          /*
           setTimeout(() => {
             confetti();
-          }, 400);
-          
+          }, 400);*/
+
+         
         }
-      
+
         drawTokens();
         addEventListeners();
       }
@@ -162,7 +163,7 @@ function addEventListeners() {
 function searchPosition(element) {
   let rowIndex = 0;
   let columnIndex = 0;
-  matriz.forEach((row, index) => {
+  Matriz.forEach((row, index) => {
     let rowElement = row.findIndex((item) => item == element);
     if (rowElement !== -1) {
       //console.log(rowElement, index);
@@ -218,9 +219,9 @@ function canItMove(actualPosition, emptyPosition) {
 }
 
 function updateMatrix(element, actualPosition, emptyPosition) {
-  matriz[actualPosition[0]][actualPosition[1]] = "";
-  matriz[emptyPosition[0]][emptyPosition[1]] = element;
-  console.log(matriz);
+  Matriz[actualPosition[0]][actualPosition[1]] = "";
+  Matriz[emptyPosition[0]][emptyPosition[1]] = element;
+  console.log(Matriz);
 }
 
 function shuffleMatrix() {
@@ -239,7 +240,13 @@ function shuffleMatrix() {
       row++;
     }
   });
-  return shuffleMatrix;
+
+
+  return [
+    ["1", "2", "3"],
+    ["4", "", "6"],
+    ["7", "5", "8"],
+  ];
 }
 
 function compareMatrix() {
@@ -249,20 +256,18 @@ function compareMatrix() {
     ["4", "5", "6"],
     ["7", "8", ""],
   ];
-  Matrix.forEach((row, indexRow) => {
+  Matriz.forEach((row, indexRow) => {
     row.forEach((element, indexColum) => {
       if (element == finalMatrix[indexRow][indexColum]) {
-      counter++;
-      } 
-    })
-  })
+        counter++;
+      }
+    });
+  });
   console.log(counter);
   if (counter == 9) {
     return true;
   } else {
     return false;
-
-
   }
 }
 /*
