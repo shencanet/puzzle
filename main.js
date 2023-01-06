@@ -89,21 +89,31 @@ animate();
 */
 let Matrix = [
   ["1", "2", "3"],
-  ["4", "5", "6"],
-  ["7", "", "8"],
+  ["4", "", "6"],
+  ["7", "5", "8"],
 ];
 let matriz =  Matrix || shuffleMatrix();
 let startBtn = document.querySelector('#start')
 let board = document.querySelector(".board");
+let firstScreen = document.querySelector('.first-screen');
+let startBtncontainer = document.querySelector('.startBtn-container');
 //animacion botones
 startBtn.addEventListener('mousedown', ()=>{
   startBtn.style.top = '4px';
 })
 startBtn.addEventListener('mouseup', ()=>{
-  startBtn.style.top = '0px';
+
+})
+startBtn.addEventListener('click', ()=>{
+  firstScreen.style.display = 'none';
+  startBtncontainer.style.display = 'none'; 
+
+  drawTokens();
+  addEventListeners();
+
 })
 
-//console.log(board);
+
 
 //drawTokens();
 //addEventListeners();
@@ -134,6 +144,7 @@ function addEventListeners() {
 
         let resultado = compareMatrix();
         console.log(resultado);
+        
         if (resultado == true) {
           setTimeout(() => {
             confetti();
@@ -141,8 +152,8 @@ function addEventListeners() {
           
         }
       
-        //drawTokens(); ??¿?¿?¿?¿?¿quw hace esto????
-        //addEventListeners();
+        drawTokens();
+        addEventListeners();
       }
     })
   );
@@ -254,7 +265,7 @@ function compareMatrix() {
 
   }
 }
-
+/*
 let sound = new Audio('./Music/Metallica.mp3');
 
 playbtn.addEventListener('click', ()=>{
@@ -263,4 +274,4 @@ playbtn.addEventListener('click', ()=>{
 
 pausebtn.addEventListener('click', ()=>{
   sound.pause();
-});
+});*/
