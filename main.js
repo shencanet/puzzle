@@ -98,7 +98,7 @@ let board = document.querySelector(".board");
 let firstScreen = document.querySelector(".first-screen");
 let startBtncontainer = document.querySelector(".startBtn-container");
 let counterElement = document.querySelector('.counter');
-let counter = 60;
+let counter;
 //animacion botones
 startBtn.addEventListener("mousedown", () => {
   startBtn.style.top = "4px";
@@ -116,7 +116,8 @@ startBtn.addEventListener("click", () => {
   firstScreen.style.display = "none";
   startBtncontainer.style.display = "none";
   Matriz = shuffleMatrix();
-  startCounter()
+  startCounter();
+  counter= 25;
   drawTokens();
   addEventListeners();
 });
@@ -300,12 +301,13 @@ pausebtn.addEventListener('click', ()=>{
 function startCounter(){
   let counterId = setInterval(()=>{
     counter --;
-    if(counter == 0){
+    if(counter <= 0){
       let sound = new Audio('./Music/error.mp3');
       
       sound.play();
       clearInterval(counterId);
       counterElement.style.display = 'none';
+      startBtn.innerText = "Jugar de nuevo";
       board.innerHTML = '<p class= "game-over">You are a Looser</p>';
       startBtncontainer.style.display = "block";
     }else{
