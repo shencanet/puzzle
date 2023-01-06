@@ -168,5 +168,14 @@ body{
 }
 .counter{
     display: none;
-    
+
+}
+
+.game-over{
+    font-size: 48px;
+    border: 1px solid white;
+    width: 300px;
+    text-align: center;
+    margin: 60px 0px;
+
 }

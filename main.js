@@ -107,26 +107,16 @@ startBtn.addEventListener("mouseup", () => {
   startBtn.style.top = "0px";
 });
 //contador
-let counterId = setInterval(()=>{
-  counter --;
-  if(counter == 0){
-    let sound = new Audio('./Music/error.mp3');
-    
-    sound.play();
-    clearInterval(counterId);
-    counterElement.style.display = 'none';
-  }else{
-    counterElement.innerText = counter;
-  }
-  
-  
-}, 100)
+
+
+
 
 startBtn.addEventListener("click", () => {
   counterElement.style.display = 'block';
   firstScreen.style.display = "none";
   startBtncontainer.style.display = "none";
   Matriz = shuffleMatrix();
+  startCounter()
   drawTokens();
   addEventListeners();
 });
@@ -171,11 +161,11 @@ function addEventListeners() {
           
           setTimeout(() => {
             confetti();
-          }, 400);
+          }, 250);
 
           setTimeout(() => {
             confetti();
-          }, 600);
+          }, 450);
 
          
         }
@@ -307,3 +297,21 @@ playbtn.addEventListener('click', ()=>{
 pausebtn.addEventListener('click', ()=>{
   sound.pause();
 });*/
+function startCounter(){
+  let counterId = setInterval(()=>{
+    counter --;
+    if(counter == 0){
+      let sound = new Audio('./Music/error.mp3');
+      
+      sound.play();
+      clearInterval(counterId);
+      counterElement.style.display = 'none';
+      board.innerHTML = '<p class= "game-over">You are a Looser</p>';
+      startBtncontainer.style.display = "block";
+    }else{
+      counterElement.innerText = counter;
+    }
+    
+    
+  }, 100)
+};
