@@ -97,13 +97,33 @@ let startBtn = document.querySelector("#start");
 let board = document.querySelector(".board");
 let firstScreen = document.querySelector(".first-screen");
 let startBtncontainer = document.querySelector(".startBtn-container");
+let counterElement = document.querySelector('.counter');
+let counter = 60;
 //animacion botones
 startBtn.addEventListener("mousedown", () => {
   startBtn.style.top = "4px";
 });
-startBtn.addEventListener("mouseup", () => {});
+startBtn.addEventListener("mouseup", () => {
+  startBtn.style.top = "0px";
+});
+//contador
+let counterId = setInterval(()=>{
+  counter --;
+  if(counter == 0){
+    let sound = new Audio('./Music/error.mp3');
+    
+    sound.play();
+    clearInterval(counterId);
+    counterElement.style.display = 'none';
+  }else{
+    counterElement.innerText = counter;
+  }
+  
+  
+}, 100)
 
 startBtn.addEventListener("click", () => {
+  counterElement.style.display = 'block';
   firstScreen.style.display = "none";
   startBtncontainer.style.display = "none";
   Matriz = shuffleMatrix();
@@ -145,10 +165,17 @@ function addEventListeners() {
           startBtncontainer.style.display = "block";
           startBtn.innerText = "Jugar de nuevo";
           confetti();
-          /*
+          let sound = new Audio('./Music/mario.mp3');
+          sound.play();
+
+          
           setTimeout(() => {
             confetti();
-          }, 400);*/
+          }, 400);
+
+          setTimeout(() => {
+            confetti();
+          }, 600);
 
          
         }
@@ -271,7 +298,7 @@ function compareMatrix() {
   }
 }
 /*
-let sound = new Audio('./Music/Metallica.mp3');
+let sound = new Audio('./Music/sobre-el-terreno-de-grabacion_7.mp3');
 
 playbtn.addEventListener('click', ()=>{
   sound.play();

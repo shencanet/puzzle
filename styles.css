@@ -23,7 +23,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 4px;
     width: 310px;
-    margin: 120px auto 30PX;
+    margin: 30px auto 30PX;
 
 }
 
@@ -157,3 +157,16 @@ body{
     
     background-color: var(--btnBackground);
 }*/
+
+.counter-container{
+    border: 2px solid white;
+    text-align: center;
+    font-size: 40px;
+    margin-top: 60px;
+
+
+}
+.counter{
+    display: none;
+    
+}
