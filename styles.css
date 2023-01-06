@@ -12,6 +12,9 @@
     --tokenShadow: aqua;
     --tokenText: #020202;
     --background: hsl(231, 38%, 79%);
+    --btnBackground: #3edaf1;
+    --btnShadow: #0885da;
+    --btnText: #135fb5;
 
 }
 .board{
@@ -88,26 +91,36 @@ body{
     width: 350px;
     height: 350px;
     cursor: pointer;
+    margin: 45px auto;
 
 }
+/*Botones*/
 
 .startBtn-container{
     border: 2px solid white;
 
 
 }
-
+/*Juego */
 .play-btn{
      width: 280px;
      height: 60px;
      font-size: 18px;
+     border-radius: 8px;
+     cursor: pointer;
+     background-color: var(--btnBackground);
 
+/*musica*/
 }#playbtn{
     color: black;
     width: 280px;
     height: 60px;
     font-size: 18px; 
     cursor: pointer;
+    margin: 10px auto;
+    display:inline-table;
+    background-color: var(--btnBackground);
+    gap: 2px;
 }
 
 #pausebtn{
@@ -116,4 +129,7 @@ body{
     height: 60px;
     font-size: 18px; 
     cursor: pointer;
+    display: grid;
+    margin: 10px auto;
+    background-color: var(--btnBackground);
 }
