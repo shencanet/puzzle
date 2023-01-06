@@ -102,6 +102,13 @@ body{
 
 }
 /*Juego */
+.startBtn-container{
+    border: 2px solid white;
+    position: relative;
+    width: 280px;
+    margin: auto 300px;
+}
+
 .play-btn{
      width: 280px;
      height: 60px;
@@ -109,27 +116,43 @@ body{
      border-radius: 8px;
      cursor: pointer;
      background-color: var(--btnBackground);
+     color: var(--btnText);
+     border: none;
+     position: absolute;
+     top: 0;
+}
 
-/*musica*/
-}#playbtn{
-    color: black;
+.btn-shadow{
     width: 280px;
     height: 60px;
+    background-color: var(--btnShadow);
+    border-radius: 8px;
+    position: absolute;
+
+     }
+
+
+/*musica
+#playbtn{
+    color: black;
+    width: 200px;
+    height: 30px;
     font-size: 18px; 
     cursor: pointer;
     margin: 10px auto;
-    display:inline-table;
+    
     background-color: var(--btnBackground);
     gap: 2px;
 }
 
 #pausebtn{
     color: black;
-    width: 280px;
-    height: 60px;
+    width: 200px;
+    height: 30px;
     font-size: 18px; 
     cursor: pointer;
     display: grid;
     margin: 10px auto;
+    
     background-color: var(--btnBackground);
-}
+}*/
