@@ -78,7 +78,7 @@ body{
 
 /*PANTALLA INICIAL */
 .first-screen{
-    border: 1px solid red;
+    border: 0px solid red;
     text-align: center;
 
 
@@ -159,7 +159,7 @@ body{
 }*/
 
 .counter-container{
-    border: 2px solid white;
+   
     text-align: center;
     font-size: 40px;
     margin-top: 60px;
