@@ -133,6 +133,30 @@ body{
      }
 
 
+
+
+.counter-container{
+   
+    text-align: center;
+    font-size: 40px;
+    margin-top: 60px;
+
+
+}
+.counter{
+    display: none;
+
+}
+
+.game-over{
+    font-size: 48px;
+    border: 1px solid white;
+    width: 300px;
+    text-align: center;
+    margin: 60px 0px;
+
+}
+
 /*musica
 #playbtn{
     color: black;
@@ -157,25 +181,3 @@ body{
     
     background-color: var(--btnBackground);
 }*/
-
-.counter-container{
-   
-    text-align: center;
-    font-size: 40px;
-    margin-top: 60px;
-
-
-}
-.counter{
-    display: none;
-
-}
-
-.game-over{
-    font-size: 48px;
-    border: 1px solid white;
-    width: 300px;
-    text-align: center;
-    margin: 60px 0px;
-
-}

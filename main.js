@@ -97,7 +97,7 @@ let startBtn = document.querySelector("#start");
 let board = document.querySelector(".board");
 let firstScreen = document.querySelector(".first-screen");
 let startBtncontainer = document.querySelector(".startBtn-container");
-let counterElement = document.querySelector('.counter');
+let counterElement = document.querySelector(".counter");
 let counterXXX = 60;
 let playerWin = false;
 //animacion botones
@@ -109,18 +109,15 @@ startBtn.addEventListener("mouseup", () => {
 });
 //contador
 
-
-
-
 startBtn.addEventListener("click", () => {
-  counterElement.style.display = 'block';
+  counterElement.style.display = "block";
   firstScreen.style.display = "none";
   startBtncontainer.style.display = "none";
   Matriz = shuffleMatrix();
   startCounter();
 
   drawTokens();
-  counterXXX= 60;
+  counterXXX = 60;
   addEventListeners();
 });
 
@@ -159,19 +156,16 @@ function addEventListeners() {
           startBtncontainer.style.display = "block";
           startBtn.innerText = "Jugar de nuevo";
           confetti();
-          let sound = new Audio('./Music/mario.mp3');
+          let sound = new Audio("./Music/mario.mp3");
           sound.play();
 
-          
           setTimeout(() => {
             confetti();
           }, 250);
 
           setTimeout(() => {
             confetti();
-          }, 450);
-
-         
+          }, 500);
         }
 
         drawTokens();
@@ -262,7 +256,6 @@ function shuffleMatrix() {
     }
   });
 
-
   return shuffleArray;
   /*
   [
@@ -293,6 +286,33 @@ function compareMatrix() {
     return false;
   }
 }
+
+function startCounter() {
+  counterElement.innerText = counterXXX;
+  let counterId = setInterval(() => {
+    counterXXX--;
+
+    if (counterXXX <= 0) {
+      let sound = new Audio("./Music/error.mp3");
+
+      sound.play();
+      clearInterval(counterId);
+      counterElement.style.display = "none";
+      startBtn.innerText = "Jugar de nuevo";
+      board.innerHTML = '<p class= "game-over">You are a Looser</p>';
+      startBtncontainer.style.display = "block";
+    } else {
+      counterElement.innerText = counterXXX;
+    }
+    if (playerWin == true) {
+      clearInterval(counterId); //detener
+      //counterElement.style.display = 'none';//oculta
+      board.innerHTML = '<p class= "game-over">winner</p>';
+      playerWin = false;
+    }
+  }, 1000);
+}
+
 /*
 let sound = new Audio('./Music/sobre-el-terreno-de-grabacion_7.mp3');
 
@@ -303,33 +323,3 @@ playbtn.addEventListener('click', ()=>{
 pausebtn.addEventListener('click', ()=>{
   sound.pause();
 });*/
-function startCounter(){
-  
-  counterElement.innerText = counterXXX;
-  let counterId = setInterval(()=>{
-    counterXXX --;
-
-    if(counterXXX <= 0){
-      let sound = new Audio('./Music/error.mp3');
-      
-      sound.play();
-      clearInterval(counterId);
-      counterElement.style.display = 'none';
-      startBtn.innerText = "Jugar de nuevo";
-      board.innerHTML = '<p class= "game-over">You are a Looser</p>';
-      startBtncontainer.style.display = "block";
-    }else{
-
-      counterElement.innerText = counterXXX;
-    }
-    if(playerWin == true){
-      clearInterval(counterId);//detener
-      //counterElement.style.display = 'none';//oculta
-      board.innerHTML = '<p class= "game-over">winner</p>';
-      playerWin = false;
-      
-    }
-    
-    
-  }, 1000)
-};
