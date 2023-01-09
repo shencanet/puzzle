@@ -1,6 +1,10 @@
+/*
 const elts = {
   text1: document.getElementById("text1"),
   text2: document.getElementById("text2"),
+
+
+
 };
 
 // The strings to morph between. You can change these to anything you want!
@@ -57,7 +61,7 @@ function doCooldown() {
   elts.text1.style.opacity = "0%";
 }
 
-// Animation loop, which is called every frame.
+let// Animation loop, which is called every frame.
 function animate() {
   requestAnimationFrame(animate);
 
@@ -81,18 +85,19 @@ function animate() {
 
 // Start the animation.
 animate();
+*/
 
 /*fila *columna
 [0.0],[0.1].[0.2]
 [1.0],[1.1].[1.2]
 [2.0],[2.1].[2.2]*/
 
-let Matrix = [
+let Matrixx = [
   ["1", "2", "3"],
-  ["4", "", "6"],
-  ["7", "5", "8"],
+  ["4", "5", "6"],
+  ["7", "", "8"],
 ];
-let Matriz = shuffleMatrix();
+let Matrix = shuffleMatrix();
 let startBtn = document.querySelector("#start");
 let board = document.querySelector(".board");
 let firstScreen = document.querySelector(".first-screen");
@@ -110,14 +115,19 @@ startBtn.addEventListener("mouseup", () => {
 //contador
 
 startBtn.addEventListener("click", () => {
-  counterElement.style.display = "block";
-  firstScreen.style.display = "none";
   startBtncontainer.style.display = "none";
-  Matriz = shuffleMatrix();
-  startCounter();
+  firstScreen.style.display = "none";
+  counterElement.style.display = "block";
+  
+ 
+  //Matrix = shuffleMatrix();
+  console.log(Matrix)
+  
+ 
 
   drawTokens();
   counterXXX = 60;
+  startCounter();
   addEventListeners();
 });
 
@@ -126,7 +136,7 @@ startBtn.addEventListener("click", () => {
 
 function drawTokens() {
   board.innerHTML = "";
-  Matriz.forEach((row) =>
+  Matrix.forEach((row) =>
     row.forEach((element) => {
       if (element == "") {
         board.innerHTML += `<div class ='empty'>${element}</div>`;
@@ -178,7 +188,7 @@ function addEventListeners() {
 function searchPosition(element) {
   let rowIndex = 0;
   let columnIndex = 0;
-  Matriz.forEach((row, index) => {
+  Matrix.forEach((row, index) => {
     let rowElement = row.findIndex((item) => item == element);
     if (rowElement !== -1) {
       //console.log(rowElement, index);
@@ -234,9 +244,9 @@ function canItMove(actualPosition, emptyPosition) {
 }
 
 function updateMatrix(element, actualPosition, emptyPosition) {
-  Matriz[actualPosition[0]][actualPosition[1]] = "";
-  Matriz[emptyPosition[0]][emptyPosition[1]] = element;
-  console.log(Matriz);
+  Matrix[actualPosition[0]][actualPosition[1]] = "";
+  Matrix[emptyPosition[0]][emptyPosition[1]] = element;
+  console.log(Matrix);
 }
 
 function shuffleMatrix() {
@@ -256,7 +266,7 @@ function shuffleMatrix() {
     }
   });
 
-  return shuffleArray;
+  return shuffleMatrix
   /*
   [
     ["1", "2", "3"],
@@ -272,7 +282,7 @@ function compareMatrix() {
     ["4", "5", "6"],
     ["7", "8", ""],
   ];
-  Matriz.forEach((row, indexRow) => {
+  Matrix.forEach((row, indexRow) => {
     row.forEach((element, indexColum) => {
       if (element == finalMatrix[indexRow][indexColum]) {
         counter++;
